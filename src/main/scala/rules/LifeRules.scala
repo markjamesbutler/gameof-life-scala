@@ -6,7 +6,7 @@ import board.Board
 /**
  * Created by butlem04 on 08/07/2014.
  */
-class LifeRules {
+object LifeRules {
 
   def apply(x: Int, y: Int, board: Board): Boolean = {
 

@@ -7,8 +7,6 @@ import rules.LifeRules
  */
 class LifeRulesTest extends FlatSpec {
 
-  val rule = new LifeRules
-
   "Life Rules" should " pass with two neighbours and alive cell." in {
     test(Array(Array(true, false, false),Array(false, true, false),Array(false, false, true)), true)
   }
@@ -49,7 +47,7 @@ class LifeRulesTest extends FlatSpec {
 
     val board = new Board(array)
 
-    assert(result == rule.apply(1,1 ,board))
+    assert(result == LifeRules.apply(1,1 ,board))
 
   }
 

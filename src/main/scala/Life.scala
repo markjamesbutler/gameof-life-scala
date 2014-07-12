@@ -14,15 +14,13 @@ object Life {
 
   def tick(board: Board): Board = {
 
-    val rule = new LifeRules
-
     val array = Array.ofDim[Boolean](board.length, board.length)
 
     for (i <- 0 to board.length -1 ) {
       for ( j <- 0 to board.length -1) {
         print(" " + board.getCellState(i,j));
 
-        array(i)(j)  = rule.apply(i, j, board)
+        array(i)(j)  = LifeRules.apply(i, j, board)
 
       }
       println();
@@ -30,19 +28,14 @@ object Life {
 
     println();
 
-    Thread.sleep(100L)
-
     val secondBoard = new Board(array)
 
     if (secondBoard.containsAliveCell && secondBoard.deep != board.deep) {
       tick(secondBoard)
     }
-
-    secondBoard
-    /*
-    val result = (0  until board.size).filter(board(_)(nodeIndex)).toList
-    result.forEach(println)
-    */
+    else {
+      secondBoard
+    }
   }
 
 }

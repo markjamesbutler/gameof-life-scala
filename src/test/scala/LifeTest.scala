@@ -6,10 +6,25 @@ import org.scalatest.FlatSpec
  */
 class LifeTest extends FlatSpec {
 
+  "Life tick with empty board " should " return with empty board" in {
+
+    val board = Life.tick(new Board(Array.tabulate(3,3) ((x, y) => (false))))
+
+    val result = new Board(Array.tabulate(3,3) ((x, y) => (false)))
+
+    assert(board.deep == result.deep)
+
+  }
+
   "Life tick" should " tick through board" in {
 
-    Life.tick(new Board(Array(Array(true, false, true, true),Array(true, false, true, false)
+    val board = Life.tick(new Board(Array(Array(true, false, true, true),Array(true, false, true, false)
       ,Array(true, false, true, false),Array(true, false, true, true))))
+
+    val result = new Board(Array(Array(false, false, true, false),Array(false, true, false, true)
+      ,Array(false, true, false, true),Array(false, false, true, false)))
+
+    assert(board.deep == result.deep)
 
   }
 
