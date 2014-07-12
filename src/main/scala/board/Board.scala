@@ -24,13 +24,14 @@ class Board(board: Array[Array[Boolean]]) {
 
     var count = 0
 
-    (x -1 to x + 1) foreach { x =>
-      (y -1 to y + 1) foreach { y =>
-        count += 1;
+    (x - 1 to x + 1) foreach { x =>
+      (y - 1 to y + 1) foreach { y =>
+        if (getCellState(x, y)) count += 1;
       }
     }
 
-    count
+    if (getCellState(x, y)) count - 1
+    else count
 
   }
 
