@@ -1,5 +1,7 @@
 package rules
 
+import board.Board
+
 /**
  * Created by butlem04 on 08/07/2014.
  */
