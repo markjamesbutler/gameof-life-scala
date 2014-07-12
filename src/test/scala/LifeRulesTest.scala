@@ -1,13 +1,13 @@
 import board.Board
 import org.scalatest.FlatSpec
-import rules.FewerThanTwoNeighboursRule
+import rules.LifeRules
 
 /**
  * Created by butlem04 on 08/07/2014.
  */
-class FewerThanTwoNeighboursRuleTest extends FlatSpec {
+class LifeRulesTest extends FlatSpec {
 
-  val rule = new FewerThanTwoNeighboursRule
+  val rule = new LifeRules
 
   "Fewer Than Two Neighbours Rule" should " pass with two neighbours." in {
 
@@ -56,6 +56,47 @@ class FewerThanTwoNeighboursRuleTest extends FlatSpec {
     val board = new Board(array)
 
     assert(true == rule.apply(1,1 ,board))
+
+  }
+
+
+  "Fewer Than Two Neighbours Rule" should " fail with zero neighbour and dead cell" in {
+
+    val array = Array(Array(false, false, false),Array(false, false, false),Array(false, false, false))
+
+    val board = new Board(array)
+
+    assert(false == rule.apply(1,1 ,board))
+
+  }
+
+  "Fewer Than Two Neighbours Rule" should " fail with one neighbour and dead cell" in {
+
+    val array = Array(Array(false, true, false),Array(false, false, false),Array(false, false, false))
+
+    val board = new Board(array)
+
+    assert(false == rule.apply(1,1 ,board))
+
+  }
+
+  "Fewer Than Two Neighbours Rule" should " fail with two neighbours and dead cell" in {
+
+    val array = Array(Array(false, true, true),Array(false, false, false),Array(false, false, false))
+
+    val board = new Board(array)
+
+    assert(false == rule.apply(1,1 ,board))
+
+  }
+
+  "Fewer Than Two Neighbours Rule" should " fail with four neighbours and dead cell" in {
+
+    val array = Array(Array(true, true, true),Array(true, false, false),Array(false, false, false))
+
+    val board = new Board(array)
+
+    assert(false == rule.apply(1,1 ,board))
 
   }
 
