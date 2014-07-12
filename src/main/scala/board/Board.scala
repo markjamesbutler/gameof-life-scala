@@ -1,5 +1,7 @@
 package board
 
+import rules.Rules
+
 /**
  * Created by butlem04 on 08/07/2014.
  */
@@ -22,18 +24,11 @@ class Board(board: Array[Array[Boolean]]) {
 
     var count = 0
 
-
-
-    if (getCellState(x-1, y-1)) count += 1;
-    if (getCellState(x-1, y)) count += 1;
-    if (getCellState(x-1, y+1)) count += 1;
-
-    if (getCellState(x, y-1)) count += 1;
-    if (getCellState(x, y+1)) count += 1;
-
-    if (getCellState(x+1, y-1)) count += 1;
-    if (getCellState(x+1, y)) count += 1;
-    if (getCellState(x+1, y+1)) count += 1;
+    (x -1 to x + 1) foreach { x =>
+      (y -1 to y + 1) foreach { y =>
+        count += 1;
+      }
+    }
 
     count
 
