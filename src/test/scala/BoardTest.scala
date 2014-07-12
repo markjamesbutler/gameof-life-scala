@@ -53,10 +53,46 @@ class BoardTest extends FlatSpec {
 
   "Number of neighbours for 3x3 with all alive cells board" should "be eight" in {
 
-    val array = Array(Array(true, true, true),Array(true, true, true),Array(true, true, true))
+    val array = Array.tabulate(3,3) ((x, y) => (true))
     val board = new Board(array)
 
     assert(8 == board.getAliveNeighbours(1, 1))
+
+  }
+
+  "containsAliveCell" should "return false with dead board" in {
+
+    val array = Array.tabulate(3,3) ((x, y) => (false))
+    val board = new Board(array)
+
+    assert(false == board.containsAliveCell)
+
+  }
+
+  "containsAliveCell" should "return false with alive board" in {
+
+    val array = Array.tabulate(3,3) ((x, y) => (true))
+    val board = new Board(array)
+
+    assert(true == board.containsAliveCell)
+
+  }
+
+  "containsAliveCell" should "return false with single alive cell in board" in {
+
+    val array = Array(Array(false, false, false),Array(false, false, false),Array(false, false, true))
+    val board = new Board(array)
+
+    assert(true == board.containsAliveCell)
+
+  }
+
+  "length" should "return with correct value" in {
+
+    val array = Array.tabulate(3,3) ((x, y) => (true))
+    val board = new Board(array)
+
+    assert(3 == board.length)
 
   }
 

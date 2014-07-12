@@ -9,94 +9,47 @@ class LifeRulesTest extends FlatSpec {
 
   val rule = new LifeRules
 
-  "Fewer Than Two Neighbours Rule" should " pass with two neighbours." in {
-
-    val array = Array(Array(true, false, false),Array(false, true, false),Array(false, false, true))
-
-    val board = new Board(array)
-
-    assert(true == rule.apply(1,1 ,board))
-
+  "Life Rules" should " pass with two neighbours and alive cell." in {
+    test(Array(Array(true, false, false),Array(false, true, false),Array(false, false, true)), true)
   }
 
-  "Fewer Than Two Neighbours Rule" should " pass with three neighbours." in {
-
-    val array = Array(Array(true, false, false),Array(true, true, true),Array(false, false, false))
-
-    val board = new Board(array)
-
-    assert(true == rule.apply(1,1 ,board))
-
+  "Life Rules" should " pass with three neighbours and alive cell." in {
+    test(Array(Array(true, false, false),Array(true, true, true),Array(false, false, false)), true)
   }
 
-  "Fewer Than Two Neighbours Rule" should " pass with one neighbour." in {
-
-    val array = Array(Array(false, false, false),Array(true, true, false),Array(false, false, false))
-
-    val board = new Board(array)
-
-    assert(false == rule.apply(1,1 ,board))
-
+  "Life Rules" should " pass with one neighbour and alive cell.." in {
+    test(Array(Array(false, false, false),Array(true, true, false),Array(false, false, false)), false)
   }
 
-  "Fewer Than Two Neighbours Rule" should " fail with four neighbour." in {
-
-    val array = Array(Array(true, true, true),Array(true, true, false),Array(false, false, false))
-
-    val board = new Board(array)
-
-    assert(false == rule.apply(1,1 ,board))
-
+  "Life Rules" should " fail with four neighbour and alive cell." in {
+    test(Array(Array(true, true, true),Array(true, true, false),Array(false, false, false)), false)
   }
 
-  "Fewer Than Two Neighbours Rule" should " pass with three neighbour and dead cell" in {
-
-    val array = Array(Array(true, true, true),Array(false, false, false),Array(false, false, false))
-
-    val board = new Board(array)
-
-    assert(true == rule.apply(1,1 ,board))
-
+  "Life Rules" should " pass with three neighbour and dead cell." in {
+    test(Array(Array(true, true, true),Array(false, false, false),Array(false, false, false)), true)
   }
 
-
-  "Fewer Than Two Neighbours Rule" should " fail with zero neighbour and dead cell" in {
-
-    val array = Array(Array(false, false, false),Array(false, false, false),Array(false, false, false))
-
-    val board = new Board(array)
-
-    assert(false == rule.apply(1,1 ,board))
-
+  "Life Rules" should " fail with zero neighbour and dead cell." in {
+    test(Array(Array(false, false, false),Array(false, false, false),Array(false, false, false)), false)
   }
 
-  "Fewer Than Two Neighbours Rule" should " fail with one neighbour and dead cell" in {
-
-    val array = Array(Array(false, true, false),Array(false, false, false),Array(false, false, false))
-
-    val board = new Board(array)
-
-    assert(false == rule.apply(1,1 ,board))
-
+  "Life Rules" should " fail with one neighbours and dead cell" in {
+    test(Array(Array(false, true, false),Array(false, false, false),Array(false, false, false)), false)
   }
 
-  "Fewer Than Two Neighbours Rule" should " fail with two neighbours and dead cell" in {
-
-    val array = Array(Array(false, true, true),Array(false, false, false),Array(false, false, false))
-
-    val board = new Board(array)
-
-    assert(false == rule.apply(1,1 ,board))
-
+  "Life Rules" should " fail with two neighbours and dead cell" in {
+    test(Array(Array(false, true, true),Array(false, false, false),Array(false, false, false)), false)
   }
 
-  "Fewer Than Two Neighbours Rule" should " fail with four neighbours and dead cell" in {
+  "Life Rules" should " fail with four neighbours and dead cell" in {
+    test(Array(Array(true, true, true),Array(true, false, false),Array(false, false, false)), false)
+  }
 
-    val array = Array(Array(true, true, true),Array(true, false, false),Array(false, false, false))
+  def test(array: Array[Array[Boolean]], result: Boolean) {
 
     val board = new Board(array)
 
-    assert(false == rule.apply(1,1 ,board))
+    assert(result == rule.apply(1,1 ,board))
 
   }
 

@@ -6,9 +6,9 @@ import board.Board
 /**
  * Created by butlem04 on 08/07/2014.
  */
-class LifeRules extends Rule {
+class LifeRules {
 
-  override def apply(x: Int, y: Int, board: Board): Boolean = {
+  def apply(x: Int, y: Int, board: Board): Boolean = {
 
     board.getAliveNeighbours(x ,y) match {
 

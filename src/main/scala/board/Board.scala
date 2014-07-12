@@ -37,5 +37,16 @@ class Board(board: Array[Array[Boolean]]) {
 
   }
 
+  def containsAliveCell: Boolean = {
+    board.flatten.contains(true)
+  }
+
+  def length: Int = {
+    board.length
+  }
+
+  def deep = {
+    board.deep
+  }
 
 }
