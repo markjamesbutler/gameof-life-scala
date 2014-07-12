@@ -20,18 +20,9 @@ class Board(board: Array[Array[Boolean]]) {
 
   def getAliveNeighbours(x: Int, y: Int): Int = {
 
-    var count = 0
+    var count = board.flatten.count(s => s == true)
 
-    if (getCellState(x-1, y-1)) count += 1;
-    if (getCellState(x-1, y)) count += 1;
-    if (getCellState(x-1, y+1)) count += 1;
-
-    if (getCellState(x, y-1)) count += 1;
-    if (getCellState(x, y+1)) count += 1;
-
-    if (getCellState(x+1, y-1)) count += 1;
-    if (getCellState(x+1, y)) count += 1;
-    if (getCellState(x+1, y+1)) count += 1;
+    if (getCellState(x, y)) count -= 1
 
     count
 

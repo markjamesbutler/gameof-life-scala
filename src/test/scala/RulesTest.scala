@@ -1,11 +1,11 @@
 import board.Board
 import org.scalatest.FlatSpec
-import rules.LifeRules
+import rules.Rules
 
 /**
  * Created by butlem04 on 08/07/2014.
  */
-class LifeRulesTest extends FlatSpec {
+class RulesTest extends FlatSpec {
 
   "Life Rules" should " pass with two neighbours and alive cell." in {
     test(Array(Array(true, false, false),Array(false, true, false),Array(false, false, true)), true)
@@ -47,7 +47,7 @@ class LifeRulesTest extends FlatSpec {
 
     val board = new Board(array)
 
-    assert(result == LifeRules.apply(1,1 ,board))
+    assert(result == Rules.apply(1,1 ,board))
 
   }
 

@@ -1,32 +1,20 @@
 import board.Board
-import rules.LifeRules
+import rules.Rules
 
 /**
  * Created by butlem04 on 08/07/2014.
  */
 object Life {
 
-  def main() {
-
-     tick(new Board(Array(Array(true, true, true, true),Array(true, false, true, true),Array(true, true, true, true))))
-
-  }
-
   def tick(board: Board): Board = {
 
     val array = Array.ofDim[Boolean](board.length, board.length)
 
-    for (i <- 0 to board.length -1 ) {
-      for ( j <- 0 to board.length -1) {
-        print(" " + board.getCellState(i,j));
-
-        array(i)(j)  = LifeRules.apply(i, j, board)
-
+    (0 to board.length -1) foreach { x =>
+      (0 to board.length -1) foreach { y =>
+        array(x)(y)  = Rules.apply(x, y, board)
       }
-      println();
     }
-
-    println();
 
     val secondBoard = new Board(array)
 
