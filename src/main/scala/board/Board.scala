@@ -14,17 +14,17 @@ class Board(board: Array[Array[Boolean]]) {
     } catch {
 
       case aioob: ArrayIndexOutOfBoundsException => false
+        
     }
 
   }
 
   def getAliveNeighbours(x: Int, y: Int): Int = {
 
-    var count = board.flatten.count(s => s == true)
+    val count = board.flatten.count(s => s == true)
 
-    if (getCellState(x, y)) count -= 1
-
-    count
+    if (getCellState(x, y)) count - 1
+    else count
 
   }
 
