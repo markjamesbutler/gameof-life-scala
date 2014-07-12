@@ -22,6 +22,8 @@ class Board(board: Array[Array[Boolean]]) {
 
     var count = 0
 
+
+
     if (getCellState(x-1, y-1)) count += 1;
     if (getCellState(x-1, y)) count += 1;
     if (getCellState(x-1, y+1)) count += 1;
