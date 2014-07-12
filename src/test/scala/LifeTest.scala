@@ -16,6 +16,18 @@ class LifeTest extends FlatSpec {
 
   }
 
+
+  "Life tick with all alive board " should " return with correct result" in {
+
+    val board = Life.tick(new Board(Array.tabulate(4,4) ((x, y) => (true))))
+
+    val result = Life.tick(new Board(Array.tabulate(4,4) ((x, y) => (false))))
+
+    assert(board.deep == result.deep)
+
+  }
+
+
   "Life tick" should " tick through board" in {
 
     val board = Life.tick(new Board(Array(Array(true, false, true, true),Array(true, false, true, false)
@@ -27,5 +39,6 @@ class LifeTest extends FlatSpec {
     assert(board.deep == result.deep)
 
   }
+
 
 }

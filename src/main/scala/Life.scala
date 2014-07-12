@@ -12,7 +12,7 @@ object Life {
 
     (0 to board.length -1) foreach { x =>
       (0 to board.length -1) foreach { y =>
-        array(x)(y)  = Rules.apply(x, y, board)
+        array(x)(y) = Rules.apply(x, y, board)
       }
     }
 
