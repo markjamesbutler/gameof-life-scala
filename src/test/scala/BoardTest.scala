@@ -105,4 +105,64 @@ class BoardTest extends FlatSpec {
 
   }
 
+  "getNeighbours" should "be empty for one cell board" in {
+
+    val array = Array(Array(false))
+    val neighbours = Array.tabulate(3,3) ((x, y) => (false))
+    val board = new Board(array)
+
+    assert(neighbours.deep == board.getNeighbours(0, 0).deep)
+
+  }
+
+
+  "getNeighbours" should "return neighbours for 2x2 board" in {
+
+    val array = Array(Array(true, true),
+      Array(true, false))
+
+    val neighbours = Array(Array(false, false, false),
+                           Array(false, true, true),
+                           Array(false, true, false))
+
+    val board = new Board(array)
+
+    assert(neighbours.deep == board.getNeighbours(0, 0).deep)
+
+  }
+
+  "getNeighbours" should "return neighbours for 3x3 board" in {
+
+    val array = Array.tabulate(3,3) ((x, y) => (false))
+    val neighbours = Array.tabulate(3,3) ((x, y) => (false))
+    val board = new Board(array)
+
+    assert(neighbours.deep == board.getNeighbours(0, 0).deep)
+
+  }
+
+  "getNeighbours" should "return neighbours for 4x4 board" in {
+
+    val array = Array.tabulate(4,4) ((x, y) => (false))
+    val neighbours = Array.tabulate(3,3) ((x, y) => (false))
+    val board = new Board(array)
+
+    assert(neighbours.deep == board.getNeighbours(0, 0).deep)
+
+  }
+
+  "getNeighbours" should "return correct neighbours" in {
+
+    val array = Array(Array(true, true, false, true),
+                      Array(false, true, false, true),
+                      Array(false, false, false, true),
+                      Array(false, false, false, true))
+
+    val neighbours = Array(Array(true, true, false),Array(false, true, false),Array(false, false, false))
+    val board = new Board(array)
+
+    assert(neighbours.deep == board.getNeighbours(1, 1).deep)
+
+  }
+
 }

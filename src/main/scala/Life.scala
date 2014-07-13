@@ -12,9 +12,19 @@ object Life {
 
     (0 to board.length -1) foreach { x =>
       (0 to board.length -1) foreach { y =>
+
+        print(" " + board.getCellState(x, y))
+
         array(x)(y) = Rules.apply(x, y, board)
+
+
+
       }
+
+      println()
     }
+
+    println()
 
     val secondBoard = new Board(array)
 
